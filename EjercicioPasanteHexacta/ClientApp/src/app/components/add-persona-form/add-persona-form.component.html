@@ -1,0 +1,68 @@
+<div class = "form-container">
+    <h3>Agregar persona</h3>
+    <form class="form" #addPersonaForm="ngForm" (ngSubmit)="onPersonaAdd()" id="addPersonaFormId" [formGroup]="reactiveForm">
+
+        <label class="form-control-label" for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre">
+
+        <div *ngIf="reactiveForm.get('nombre').invalid && (reactiveForm.get('nombre').dirty || reactiveForm.get('nombre').touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="reactiveForm.get('nombre').errors?.['required']">
+                <span style="color : red">El nombre es requerido.</span>
+            </div>
+            <div *ngIf="reactiveForm.get('nombre').errors?.['pattern']">
+                <span style="color : red">El nombre solo puede contener letras.</span>
+            </div>
+
+        </div>
+
+        <label class="form-control-label" for="apellido">Apellido</label>
+        <input type="text" class="form-control" id="apellido" formControlName="apellido" placeholder="Apellido">
+
+        <div *ngIf="reactiveForm.get('apellido').invalid && (reactiveForm.get('apellido').dirty || reactiveForm.get('apellido').touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="reactiveForm.get('apellido').errors?.['required']">
+                <span style="color : red">El apellido es requerido.</span>
+            </div>
+            <div *ngIf="reactiveForm.get('apellido').errors?.['pattern']">
+                <span style="color : red">El apellido solo puede contener letras.</span>
+            </div>
+
+        </div>
+
+        <label class="form-control-label" for="edad">Edad</label>
+        <input type="number" class="form-control" id="edad" formControlName="edad" min="0" placeholder="Edad">
+
+        <div *ngIf="reactiveForm.get('edad').invalid && (reactiveForm.get('edad').dirty || reactiveForm.get('edad').touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="reactiveForm.get('edad').errors?.['required']">
+                <span style="color : red">La edad es requerida.</span>
+            </div>
+            <div *ngIf="reactiveForm.get('edad').errors?.['min']">
+                <span style="color : red">La edad debe ser positiva.</span>
+            </div>
+        </div>
+
+
+        <label class="form-control-label" for="estadoC">Estado Civil</label>
+        <select class="form-control" id="estadoC" form="addPersonaFormId" formControlName="estadoCivil">
+            <option *ngFor="let estadoC of estadosCiviles" [value]="estadoC">{{estadoC}}</option>
+        </select>
+
+        <div *ngIf="reactiveForm.get('estadoCivil').invalid && (reactiveForm.get('estadoCivil').dirty || reactiveForm.get('estadoCivil').touched)"
+             class="alert alert-danger">
+
+            <div *ngIf="reactiveForm.get('estadoCivil').errors?.['required']">
+                <span style="color : red">Seleccione un estado civil.</span>
+            </div>
+        </div>
+
+
+        <input class="submit-form" type="submit" value="Agregar Persona">
+
+    </form>
+</div>
+

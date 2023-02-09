@@ -1,0 +1,66 @@
+<h3>Personas</h3>
+
+<form class="form" #getPersonaForm="ngForm" (ngSubmit)="onGetPersonas()" id="getPersonaFormId" [formGroup]="filterForm">
+    <label class="form-control-label" for="nombre">Nombre</label>
+    <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre">
+
+    <label class="form-control-label" for="apellido">Apellido</label>
+    <input type="text" class="form-control" id="apellido" formControlName="apellido" placeholder="Apellido">
+
+    <input class="submit-form" type="submit" value="Buscar">
+</form>
+
+<div class="table-container">
+
+    <mat-table [dataSource]="listPersonas" class="personas-table mat-elevation-z8">
+
+        <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef><strong>Nombre</strong></mat-header-cell>
+            <mat-cell *matCellDef="let persona">{{persona.nombre}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="apellido">
+            <mat-header-cell *matHeaderCellDef><strong>Apellido</strong></mat-header-cell>
+            <mat-cell class="description-cell"
+                      *matCellDef="let persona">
+                {{persona.apellido}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="edad">
+            <mat-header-cell *matHeaderCellDef><strong>Edad</strong></mat-header-cell>
+            <mat-cell class="edad-cell"
+                      *matCellDef="let persona">
+                {{persona.edad}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="grupoEtario">
+            <mat-header-cell *matHeaderCellDef><strong>Grupo Etario</strong></mat-header-cell>
+            <mat-cell class="grupoEtario-cell"
+                      *matCellDef="let persona">
+                {{persona.grupoEtario}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="estadoCivil">
+            <mat-header-cell *matHeaderCellDef><strong>Estado Civil</strong></mat-header-cell>
+            <mat-cell class="estadoCivil-cell"
+                      *matCellDef="let persona">
+                {{persona.estadoCivil}}
+            </mat-cell>
+        </ng-container>
+
+        <
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+    </mat-table>
+
+</div>
+
+<div *ngIf="!listPersonas.length">
+    <label style="color: red">No se encontraron personas.</label>
+</div>
+

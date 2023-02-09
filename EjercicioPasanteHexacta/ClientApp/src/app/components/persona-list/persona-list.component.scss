@@ -1,0 +1,46 @@
+.personaList--grid{
+    display: flex;
+    flex-direction: column
+}
+.form-container {
+  margin: 20px;
+  max-width: 300px;
+
+}
+
+mat-table{
+  width: 100%;
+}
+
+.form {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+}
+
+.form-control {
+  max-width: 250px;
+  margin-top: 5px;
+  margin-left: 5px
+}
+
+.form-control-label {
+  margin-top: 8px;
+  margin-right: 0px;
+}
+
+.submit-form {
+  margin-top: 20px;
+  align-self: center;
+}
+
+.mat-header-cell{
+    background-color: #e8e8e8
+}
+
+.table-container {
+  height: 400px;
+  max-width: 100%;
+  overflow: auto;
+}
