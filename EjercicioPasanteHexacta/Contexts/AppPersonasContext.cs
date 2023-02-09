@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace EjercicioPasanteHexacta
+namespace EjercicioPasanteHexacta.Contexts
 {
-    public class AppPersonasContext: DbContext
+    public class AppPersonasContext : DbContext
     {
         public virtual DbSet<Persona> Personas { get; set; }
 
@@ -16,7 +16,7 @@ namespace EjercicioPasanteHexacta
             try
             {
 
-                var converter = new ValueConverter<GrupoEtario, string>(grupo => grupo.Nombre, nombre => GrupoEtario.GruposEtarios.Find(grupo => grupo.Nombre == nombre)!= null? GrupoEtario.GruposEtarios.Find(grupo => grupo.Nombre == nombre) : new GrupoEtario("Otro",0,200));
+                var converter = new ValueConverter<GrupoEtario, string>(grupo => grupo.Nombre, nombre => GrupoEtario.GruposEtarios.Find(grupo => grupo.Nombre == nombre) != null ? GrupoEtario.GruposEtarios.Find(grupo => grupo.Nombre == nombre) : new GrupoEtario("Otro", 0, 200));
 
                 modelBuilder
                     .Entity<Persona>()
@@ -24,11 +24,12 @@ namespace EjercicioPasanteHexacta
                     .HasConversion(converter);
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Console.WriteLine("El grupo etario no está determinado: ", ex.Message);
             }
 
-            string query = String.Join("", GrupoEtario.GruposEtarios.Select(grupo => $"WHEN [Edad] BETWEEN {grupo.Min} AND {grupo.Max} THEN '{grupo.Nombre}' ").ToArray());
+            string query = string.Join("", GrupoEtario.GruposEtarios.Select(grupo => $"WHEN [Edad] BETWEEN {grupo.Min} AND {grupo.Max} THEN '{grupo.Nombre}' ").ToArray());
 
             modelBuilder.Entity<Persona>()
                 .Property(p => p.GrupoEtario)
