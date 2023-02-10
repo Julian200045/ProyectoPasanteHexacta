@@ -3,7 +3,6 @@ import { Persona } from '../models/persona.model'
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { environment } from '../../environments/environment'
 import { PersonaDTO } from '../dtos/persona.dto';
-import { catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

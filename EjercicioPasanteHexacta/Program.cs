@@ -1,9 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
-using EjercicioPasanteHexacta.Models;
 using EjercicioPasanteHexacta.Services;
-using static System.Formats.Asn1.AsnWriter;
-using Microsoft.Extensions.Hosting;
 using EjercicioPasanteHexacta.Contexts;
 
 var AllowSpecificOrigins = "_myAllowSpecificOrigins";

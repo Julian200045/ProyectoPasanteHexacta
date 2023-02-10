@@ -33,7 +33,7 @@
         </div>
 
         <label class="form-control-label" for="edad">Edad</label>
-        <input type="number" class="form-control" id="edad" formControlName="edad" min="0" placeholder="Edad">
+        <input type="number" class="form-control" id="edad" formControlName="edad" min="0" max="200" placeholder="Edad">
 
         <div *ngIf="reactiveForm.get('edad').invalid && (reactiveForm.get('edad').dirty || reactiveForm.get('edad').touched)"
              class="alert alert-danger">
@@ -43,6 +43,9 @@
             </div>
             <div *ngIf="reactiveForm.get('edad').errors?.['min']">
                 <span style="color : red">La edad debe ser positiva.</span>
+            </div>
+            <div *ngIf="reactiveForm.get('edad').errors?.['max']">
+                <span style="color : red">La edad debe ser menor a 200.</span>
             </div>
         </div>
 

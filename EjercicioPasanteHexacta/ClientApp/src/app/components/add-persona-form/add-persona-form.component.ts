@@ -47,7 +47,7 @@ export class AddPersonaFormComponent implements OnInit {
 
       apellido: new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
 
-      edad: new FormControl(null, [Validators.required, Validators.pattern('[0-9]*'), Validators.min(0)]),
+      edad: new FormControl(null, [Validators.required, Validators.pattern('[0-9]*'), Validators.min(0), Validators.max(200)]),
 
       estadoCivil: new FormControl(null, [Validators.required])
 
